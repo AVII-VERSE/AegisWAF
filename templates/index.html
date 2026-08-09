@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AegisWAF — Next-Gen AI Web Security Command Center</title>
+    <meta name="description" content="AegisWAF is an advanced dual-layer Web Application Firewall powered by signature pattern matching and AI anomaly detection.">
+    
+    <!-- Custom Command Center Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/aegis.css') }}">
+    <!-- Favicon / Vector Icon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+</head>
+<body>
+    <!-- Top Command Navigation -->
+    <nav class="navbar">
+        <div class="brand-wrapper">
+            <div class="brand-icon">AW</div>
+            <div class="brand-title">AegisWAF</div>
+            <div class="telemetry-badge">
+                <span class="pulse-dot"></span>
+                <span>SYSTEM ONLINE</span>
+            </div>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" data-tab="overview-tab">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Overview
+            </button>
+            <button class="tab-btn" data-tab="inspector-tab">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                Payload Inspector
+            </button>
+            <button class="tab-btn" data-tab="soc-tab">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                SOC Dashboard
+            </button>
+            <button class="tab-btn" data-tab="rules-tab">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                Rules & AI Engine
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- =================================================================== -->
+        <!-- TAB 1: OVERVIEW & HERO                                              -->
+        <!-- =================================================================== -->
+        <section id="overview-tab" class="tab-content active">
+            <div class="hero-section">
+                <div>
+                    <h1 class="hero-headline">Next-Gen AI-Driven Web Security & Threat Defense</h1>
+                    <p class="hero-description">
+                        AegisWAF combines Layer-1 signature pattern matching with Layer-2 Machine Learning anomaly inspection to stop zero-day exploits, SQL injections, XSS attacks, and obfuscated payloads in real-time.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn-primary" onclick="document.querySelector('[data-tab=inspector-tab]').click()">
+                            🔍 Launch Payload Inspector
+                        </button>
+                        <button class="btn-secondary" onclick="document.querySelector('[data-tab=soc-tab]').click()">
+                            📊 View SOC Dashboard
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div class="card-panel" style="background: radial-gradient(circle at center, rgba(139, 92, 246, 0.12), transparent 70%); text-align: center; padding: 2.5rem 1.5rem;">
+                        <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🛡️</div>
+                        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Dual-Layer Hybrid Defense</h3>
+                        <p style="font-size: 0.88rem; color: var(--text-secondary); max-width: 320px; margin: 0 auto;">
+                            Instant signature screening coupled with Shannon Entropy statistical feature vectors & Scikit-Learn Anomaly Classifier.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Telemetry Metrics Grid -->
+            <div class="metrics-grid">
+                <div class="metric-box cyan">
+                    <div class="metric-value" id="stat-total">1,482</div>
+                    <div class="metric-label">Total HTTP Scans</div>
+                </div>
+                <div class="metric-box violet">
+                    <div class="metric-value" id="stat-blocked">284</div>
+                    <div class="metric-label">Mitigated Threats</div>
+                </div>
+                <div class="metric-box emerald">
+                    <div class="metric-value" id="stat-rate">99.4%</div>
+                    <div class="metric-label">Detection Accuracy</div>
+                </div>
+                <div class="metric-box amber">
+                    <div class="metric-value" id="stat-latency">14.2 ms</div>
+                    <div class="metric-label">Avg Inspection Time</div>
+                </div>
+            </div>
+
+            <!-- Architecture Overview Cards -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                <div class="card-panel">
+                    <div class="card-header">
+                        <div class="card-title">⚡ Layer 1: Deterministic Signature Matcher</div>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                        Screens incoming request URIs, GET query parameters, and POST payloads against a compiled registry of known attack patterns including SQL Injection, Cross-Site Scripting (XSS), RCE, Path Traversal, SSRF, and JNDI exploits for instant sub-millisecond drops.
+                    </p>
+                </div>
+                <div class="card-panel">
+                    <div class="card-header">
+                        <div class="card-title">🤖 Layer 2: Machine Learning Anomaly Detector</div>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                        Processes obfuscated or encoded payloads (URL-encoded, Hex, Base64, Unicode) through Shannon Entropy calculation, numeric density ratios, and special character distribution to detect subtle zero-day anomalies that bypass traditional static regex filters.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 2: LIVE PAYLOAD INSPECTOR                                       -->
+        <!-- =================================================================== -->
+        <section id="inspector-tab" class="tab-content">
+            <div class="inspector-layout">
+                <!-- Request Input Builder -->
+                <div class="card-panel">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            HTTP Request Builder
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <span class="form-label">Quick Threat Presets:</span>
+                        <div class="preset-pills">
+                            <button class="preset-pill" onclick="loadPreset('sqli')">SQLi Attack</button>
+                            <button class="preset-pill" onclick="loadPreset('xss')">XSS Injection</button>
+                            <button class="preset-pill" onclick="loadPreset('obfuscated')">URL Encoded Anomaly</button>
+                            <button class="preset-pill" onclick="loadPreset('rce')">RCE / Command</button>
+                            <button class="preset-pill" onclick="loadPreset('ssrf')">SSRF Metadata</button>
+                            <button class="preset-pill" onclick="loadPreset('safe')">Clean Request</button>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 120px 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Method</label>
+                            <select id="req-method" class="form-select">
+                                <option value="GET">GET</option>
+                                <option value="POST">POST</option>
+                                <option value="PUT">PUT</option>
+                                <option value="DELETE">DELETE</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Target URI / Query</label>
+                            <input type="text" id="req-uri" class="form-input" value="/search?q=' OR '1'='1'; DROP TABLE users;--">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">POST Payload / Headers (Optional)</label>
+                        <textarea id="req-body" class="form-textarea" placeholder='{"key": "value"}'></textarea>
+                    </div>
+
+                    <button class="btn-primary" id="inspect-btn" style="width: 100%; justify-content: center;">
+                        <span id="btn-text">Analyze Payload</span>
+                    </button>
+                </div>
+
+                <!-- Inspection Output Gauge & Radar -->
+                <div class="card-panel">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 11 0 0118 0z"></path></svg>
+                            Real-Time Threat Telemetry
+                        </div>
+                    </div>
+
+                    <div id="inspection-results" class="result-container">
+                        <!-- Verdict Banner -->
+                        <div id="verdict-banner" class="verdict-banner safe">
+                            <div id="verdict-icon" class="verdict-icon">🛡️</div>
+                            <div>
+                                <div id="verdict-title" class="verdict-title">SAFE</div>
+                                <div id="verdict-desc" class="verdict-desc">Passed security checks</div>
+                            </div>
+                        </div>
+
+                        <!-- Risk Meter Gauge -->
+                        <div class="risk-meter-wrapper">
+                            <div class="risk-header">
+                                <span>Threat Risk Rating</span>
+                                <span id="risk-value" style="font-weight: 700;">0.0%</span>
+                            </div>
+                            <div class="risk-bar-outer">
+                                <div id="risk-bar-fill" class="risk-bar-inner"></div>
+                            </div>
+                        </div>
+
+                        <!-- Feature Radar Bars -->
+                        <h4 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 0.75rem;">
+                            Statistical Feature Vector Breakdown
+                        </h4>
+                        <div class="feature-bars">
+                            <div id="feat-uri-len" class="feature-bar-item"></div>
+                            <div id="feat-entropy" class="feature-bar-item"></div>
+                            <div id="feat-ratio" class="feature-bar-item"></div>
+                            <div id="feat-chars" class="feature-bar-item"></div>
+                        </div>
+
+                        <!-- Remediation Guidance -->
+                        <div style="margin-top: 1.25rem; padding: 1rem; background: var(--bg-surface); border-radius: var(--radius-md); font-size: 0.82rem; color: var(--text-secondary);">
+                            <strong style="color: var(--text-primary); display: block; margin-bottom: 0.25rem;">WAF Remediation Recommendation:</strong>
+                            <span id="remediation-text">No action required.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 3: SOC DASHBOARD & LOGS                                        -->
+        <!-- =================================================================== -->
+        <section id="soc-tab" class="tab-content">
+            <!-- Controls & Filters -->
+            <div class="card-panel" style="margin-bottom: 1.5rem;">
+                <div class="dashboard-controls">
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button class="preset-pill filter-btn active" data-status="ALL" onclick="setFilter('ALL')">All Logs</button>
+                        <button class="preset-pill filter-btn" data-status="BLOCKED" onclick="setFilter('BLOCKED')">Blocked (Signature)</button>
+                        <button class="preset-pill filter-btn" data-status="ANOMALY" onclick="setFilter('ANOMALY')">Anomalies (AI)</button>
+                        <button class="preset-pill filter-btn" data-status="SAFE" onclick="setFilter('SAFE')">Clean Requests</button>
+                    </div>
+
+                    <div style="display: flex; gap: 0.75rem;">
+                        <input type="text" id="log-search" class="form-input" placeholder="Search IP, payload, or attack type..." style="width: 260px; padding: 0.4rem 0.8rem;">
+                        <button class="btn-secondary" id="export-csv-btn" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
+                            📥 Export CSV
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Threat Log Data Table -->
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Timestamp</th>
+                                <th>Client IP</th>
+                                <th>Status</th>
+                                <th>Attack Type</th>
+                                <th>Inspected Payload</th>
+                                <th>Risk Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="log-table-body">
+                            <!-- Populated via aegis.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Attack Distribution Panel -->
+            <div class="card-panel">
+                <div class="card-header">
+                    <div class="card-title">📊 Attack Vector Distribution</div>
+                </div>
+                <div id="distribution-bars">
+                    <!-- Populated via aegis.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- TAB 4: RULES & ENGINE REGISTRY                                     -->
+        <!-- =================================================================== -->
+        <section id="rules-tab" class="tab-content">
+            <div class="card-panel">
+                <div class="card-header">
+                    <div class="card-title">🛡️ AegisWAF Rules Engine & AI Vector Specification</div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h4 style="font-size: 1rem; color: var(--accent-cyan); margin-bottom: 0.75rem;">Signature Matcher Engine</h4>
+                        <ul style="list-style: none; font-size: 0.9rem; color: var(--text-secondary); line-height: 2;">
+                            <li>✓ SQL Injection Regex Signatures (UNION, DROP, SELECT, OR 1=1)</li>
+                            <li>✓ Cross-Site Scripting (XSS) Patterns (script, alert, onerror, SVG)</li>
+                            <li>✓ Remote Code Execution / Command Injections (exec, system, whoami)</li>
+                            <li>✓ Path Traversal & Local File Inclusion (../, /etc/passwd)</li>
+                            <li>✓ Server-Side Request Forgery (SSRF, 169.254.169.254, metadata)</li>
+                            <li>✓ Log4j JNDI Exploit Detection</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1rem; color: var(--accent-violet); margin-bottom: 0.75rem;">AI Anomaly Feature Vector (8-D)</h4>
+                        <ol style="font-size: 0.9rem; color: var(--text-secondary); line-height: 2;">
+                            <li>URI Character Length</li>
+                            <li>GET Parameter Length</li>
+                            <li>POST Body Length</li>
+                            <li>URI Shannon Entropy (\(H = -\sum p_i \log_2 p_i\))</li>
+                            <li>GET Parameter Entropy</li>
+                            <li>POST Body Entropy</li>
+                            <li>Numeric-to-Alpha Density Ratio</li>
+                            <li>Special Character Frequency Score</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Command Center Footer -->
+    <footer class="footer container" style="justify-content: center;">
+        <div>
+            © 2026 AegisWAF Security Command Center — Next-Gen Web Application Security
+        </div>
+    </footer>
+
+    <!-- Command Center Script -->
+    <script src="{{ url_for('static', filename='js/aegis.js') }}"></script>
+</body>
+</html>
