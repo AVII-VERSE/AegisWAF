@@ -1,14 +1,14 @@
 # 🛡️ AegisWAF — Next-Gen AI Web Security Command Center
 
 <p align="center">
-  <img src="./output-screenshots/waf-ss1.png" alt="AegisWAF Command Center" width="850"/>
+  <img src="./output-screenshots/aegis-ss1.png" alt="AegisWAF Command Center Overview" width="850"/>
 </p>
 
 <p align="center">
   <a href="#features"><img src="https://img.shields.io/badge/Engine-Dual--Layer%20Hybrid-8b5cf6?style=for-the-badge" alt="Dual-Layer"></a>
   <a href="#features"><img src="https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python"></a>
   <a href="#features"><img src="https://img.shields.io/badge/Framework-Flask-000000?style=for-the-badge&logo=flask&logoColor=white" alt="Flask"></a>
-  <a href="#features"><img src="https://img.shields.io/badge/ML%20Model-Scikit--Learn-orange?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn"></a>
+  <a href="#features"><img src="https://img.shields.io/badge/ML%20Engine-Scikit--Learn-orange?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn"></a>
   <a href="#features"><img src="https://img.shields.io/badge/Database-SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite"></a>
 </p>
 
@@ -19,13 +19,12 @@
 ## 📸 Interface Preview
 
 <p float="left" align="center">
-  <img src="./output-screenshots/waf-ss1.png" width="410" alt="Security Command Center Overview"/>
-  <img src="./output-screenshots/waf-ss2.png" width="410" alt="Live Payload Inspector & Risk Meter"/>
+  <img src="./output-screenshots/aegis-ss1.png" width="410" alt="Security Command Center Overview"/>
+  <img src="./output-screenshots/aegis-ss2.png" width="410" alt="Live Payload Inspector & Risk Meter"/>
 </p>
 
-<p float="left" align="center">
-  <img src="./output-screenshots/waf-ss3.png" width="410" alt="SOC Dashboard & Threat Logs"/>
-  <img src="./output-screenshots/waf-ss4.png" width="410" alt="Attack Distribution & Rule Engine"/>
+<p align="center">
+  <img src="./output-screenshots/aegis-ss3.png" width="830" alt="SOC Dashboard & Threat Logs Table"/>
 </p>
 
 ---
