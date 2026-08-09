@@ -1,4 +1,4 @@
-# 🛡️ AegisWAF — Next-Gen AI Web Security Command Center
+# 🛡️ AegisWAF - Next-Gen AI Web Security Command Center
 
 <p align="center">
   <img src="./output-screenshots/aegis-ss1.png" alt="AegisWAF Command Center Overview" width="850"/>
